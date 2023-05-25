@@ -19,7 +19,9 @@ import { algodClient } from "./client"
   })
 
   const signedTx = txn.signTxn(account.sk)
+
   const tx = await algodClient.sendRawTransaction(signedTx).do()
+
   await algosdk.waitForConfirmation(algodClient, tx.txId, 4)
   console.log('Transaction ID: ' + tx.txId)
 })()

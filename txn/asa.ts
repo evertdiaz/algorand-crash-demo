@@ -24,7 +24,9 @@ import { algodClient } from "./client"
   })
 
   const signedTx = txn.signTxn(signer.sk)
+
   const tx = await algodClient.sendRawTransaction(signedTx).do()
+
   const confirmedTxn = await algosdk.waitForConfirmation(algodClient, tx.txId, 4)
   console.log('Transaction ID: ' + tx.txId + '-----Asset ID: ' + confirmedTxn['asset-index'])
 })()
