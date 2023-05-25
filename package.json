@@ -1,0 +1,17 @@
+{
+  "name": "cevidevs_demo_base",
+  "version": "1.0.0",
+  "description": "This project has been generated using AlgoKit. See below for default getting started instructions.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "algosdk": "^2.3.0",
+    "dotenv": "^16.0.3",
+    "prompt-sync": "^4.2.0",
+    "ts-node": "^10.9.1"
+  }
+}

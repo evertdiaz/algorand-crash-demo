@@ -1,3 +1,10 @@
+# js related files
+node_modules/
+package-lock.json
+
+# compiled
+artifacts/
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
