@@ -4,9 +4,9 @@ import { algodClient } from "./client"
 (async () => {
   const prompt = require('prompt-sync')()
 
-  const sendermn = prompt("Ingrese mnemonic de cuenta 1: ")
-  const receiveradd = prompt("Ingrese cuenta 2 a recibir: ")
-  const amount = parseInt(prompt("Monto a transferir: "))
+  const sendermn = prompt("Insert sender account mnemonic: ")
+  const receiveradd = prompt("Insert receiver address: ")
+  const amount = parseInt(prompt("Insert amount to transfer: "))
 
   const suggestedParams = await algodClient.getTransactionParams().do()
   const account = algosdk.mnemonicToSecretKey(sendermn)
@@ -15,7 +15,8 @@ import { algodClient } from "./client"
     from: account.addr,
     to: receiveradd,
     amount,
-    suggestedParams
+    suggestedParams,
+    note: Uint8Array.from("Test note".split("").map(x => x.charCodeAt(0)))
   })
 
   const signedTx = txn.signTxn(account.sk)
