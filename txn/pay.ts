@@ -5,15 +5,15 @@ import { algodClient } from "./client"
   const prompt = require('prompt-sync')()
 
   const sendermn = prompt("Insert sender account mnemonic: ")
-  const receiveradd = prompt("Insert receiver address: ")
   const amount = parseInt(prompt("Insert amount to transfer: "))
+  const newAccount = algosdk.generateAccount()
 
   const suggestedParams = await algodClient.getTransactionParams().do()
   const account = algosdk.mnemonicToSecretKey(sendermn)
 
   const txn = algosdk.makePaymentTxnWithSuggestedParamsFromObject({
     from: account.addr,
-    to: receiveradd,
+    to: newAccount.addr,
     amount,
     suggestedParams,
     note: Uint8Array.from("Test note".split("").map(x => x.charCodeAt(0)))
